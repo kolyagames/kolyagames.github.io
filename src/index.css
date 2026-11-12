@@ -1,0 +1,47 @@
+@import '@fontsource-variable/inter/wght.css';
+@import '@fontsource-variable/playfair-display/wght-italic.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #f3f3f1;
+  --ink: #141414;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+html { background: var(--paper); }
+body {
+  margin: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+#root { position: relative; isolation: isolate; }
+
+canvas { display: block; }
+::selection { background: #1e1b8e; color: #fff; }
+
+/* DOM text that is re-drawn inside WebGL: keep it for a11y/layout, hide it once GL is live */
+.gl-live [data-gl-text] { color: transparent !important; }
+
+.sr-only-gl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.project-card.is-hidden { display: none; }
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(-2px); opacity: 0.55; }
+  50% { transform: translateY(3px); opacity: 1; }
+}
+.scroll-arrow { animation: nudge 1.6s ease-in-out infinite; }
+
+.site-header { color: #1c1917; transition: color 0.5s ease, opacity 0.4s ease; }
+.site-header[data-hidden='true'] { opacity: 0; pointer-events: none; }
+.site-header[data-theme='dark'] { color: #f5f5f4; }
